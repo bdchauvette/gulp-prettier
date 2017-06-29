@@ -15,6 +15,9 @@
     "url": "https://github.com/bdchauvette/gulp-prettier/issues"
   },
   "keywords": [
+    "gulp",
+    "prettier",
+    "gulp-prettier",
     "gulpplugin"
   ],
   "homepage": "https://github.com/bdchauvette/gulp-prettier#readme",

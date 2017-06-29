@@ -1,6 +1,11 @@
 # gulp-prettier
 
 > [Gulp][] plugin to format code with [prettier][]
+>
+> [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+> [![codecov](https://codecov.io/gh/bdchauvette/gulp-prettier/branch/master/graph/badge.svg)](https://codecov.io/gh/bdchauvette/gulp-prettier)
+> [![Build Status](https://travis-ci.org/bdchauvette/gulp-prettier.svg?branch=master)](https://travis-ci.org/bdchauvette/gulp-prettier)
+> [![dependencies Status](https://david-dm.org/bdchauvette/gulp-prettier/status.svg)](https://david-dm.org/bdchauvette/gulp-prettier)
 
 [Gulp]: http://gulpjs.com/
 [prettier]: https://github.com/prettier/prettier
