@@ -1,3 +1,6 @@
 node_modules
 build/**/*
 !build/.gitkeep
+.nyc_output
+coverage
+coverage.lcov
