@@ -19,17 +19,20 @@ npm install --save-dev @bdchauvette/gulp-prettier
 ## Usage
 
 ```js
-const gulp = require('gulp');
-const gulpPrettier = require('@bdchauvette/gulp-prettier');
+const gulp = require("gulp");
+const prettier = require("@bdchauvette/gulp-prettier");
 
-gulp.task('prettify', () =>
-  gulp.src('src/**/*.js')
-    .pipe(gulpPrettier({
-      // Prettier options, e.g.:
-      singleQuote: true,
-      trailingComma: 'all',
-    }))
-    .pipe(gulp.dest('src'));
+gulp.task("prettify", () =>
+  gulp
+    .src("src/**/*.js")
+    .pipe(
+      prettier({
+        // Normal prettier options, e.g.:
+        singleQuote: true,
+        trailingComma: "all"
+      })
+    )
+    .pipe(gulp.dest(file => file.base))
 );
 ```
 
@@ -56,16 +59,17 @@ The plugin will then work like normal, only your code will be formatted with
 the provided `prettier` instance.
 
 ```js
-const gulp = require('gulp');
-const customPrettier = require('prettier');
-const createGulpPrettier = require('@bdchauvette/gulp-prettier/factory');
+const gulp = require("gulp");
+const customPrettier = require("prettier");
+const createGulpPrettier = require("@bdchauvette/gulp-prettier/factory");
 
 const gulpPrettier = createGulpPrettier(customPrettier);
 
-gulp.task('prettify', () =>
-  gulp.src('src/**/*.js')
+gulp.task("prettify", () =>
+  gulp
+    .src("src/**/*.js")
     .pipe(gulpPrettier({ singleQuote: true }))
-    .pipe(gulp.dest('src'));
+    .pipe(gulp.dest(file => file.base))
 );
 ```
 
