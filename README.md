@@ -81,6 +81,23 @@ See [#445][] and [#2073][] for discussion.
 
 ---
 
+## Differences from `gulp-prettier`
+
+[`gulp-prettier`][] was the first plugin to integrate `gulp` and `prettier`.
+Although this package and `gulp-prettier` achieve the same goal, there are
+a few differences:
+
+  - This package allows you customize the version of `prettier`, so if
+    a new version of prettier is released, you can use it immediately,
+    without having to wait for this package to be updated. At the time of
+    this writing, `gulp-prettier` has a hard dependency on `prettier@0.0.7`.
+  - This package has a thorough test suite to make sure everything works as
+    intended.
+
+[`gulp-prettier`]: https://www.npmjs.com/package/gulp-prettier
+
+---
+
 ## Development
 
 ### Testing
