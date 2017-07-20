@@ -32,21 +32,25 @@ const pluginFactory = prettier => (options = {}) =>
     }
 
     // Prettier can determine which parser to use based on the file path. This
-    // is useful for e.g. formatting CSS files.
+    // is useful for e.g. formatting CSS or TypeScript files.
     options.filepath = file.path;
 
-    const code = file.contents.toString();
-    let prettierCode = null;
+    const originalCode = file.contents.toString();
 
     try {
-      prettierCode = prettier.format(code, options);
+      const prettierCode = prettier.format(originalCode, options);
+
+      file.didPrettierFormat = prettierCode !== originalCode;
+
+      // Only need to create a new buffer if the code actually changed
+      if (file.didPrettierFormat) {
+        file.contents = new Buffer(prettierCode);
+      }
+
+      return done(null, file);
     } catch (err) {
       return done(withError(err));
     }
-
-    file.contents = new Buffer(prettierCode);
-
-    return done(null, file);
   });
 
 module.exports = pluginFactory;

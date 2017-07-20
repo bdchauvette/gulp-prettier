@@ -61,8 +61,8 @@ test("Streamed file", t => {
 
 // -----------------------------------------------------------------------------
 
-test("Buffered file", t => {
-  t.plan(2);
+test("Buffered file (changes)", t => {
+  t.plan(3);
 
   const pluginStream = gulpPrettier();
   const data = pEvent(pluginStream, "data");
@@ -76,6 +76,27 @@ test("Buffered file", t => {
   data.then(file => {
     t.equal(file.relative, filename, "Should preserve filename");
     t.equal(file.contents.toString(), expectedCode, "Should format code");
+    t.equal(file.didPrettierFormat, true, "Should mark file as formatted");
+  });
+});
+
+// -----------------------------------------------------------------------------
+
+test("Buffered file (no changes)", t => {
+  t.plan(3);
+
+  const pluginStream = gulpPrettier();
+  const data = pEvent(pluginStream, "data");
+
+  const filename = "test-file.js";
+  const code = "var foo;\n";
+
+  pluginStream.end(createFile(filename, Buffer.from(code)));
+
+  data.then(file => {
+    t.equal(file.relative, filename, "Should preserve filename");
+    t.equal(file.contents.toString(), code, "Should have original code");
+    t.equal(file.didPrettierFormat, false, "Should not mark file as formatted");
   });
 });
 
