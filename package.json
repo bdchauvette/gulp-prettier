@@ -28,7 +28,7 @@
     "factory.js"
   ],
   "scripts": {
-    "test": "nyc --check-coverage --lines 100 tape test/**/*.spec.js",
+    "test": "nyc --check-coverage --lines 100 --functions 100 --branches 100 tape test/**/*.spec.js",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint **/*.js --fix",
