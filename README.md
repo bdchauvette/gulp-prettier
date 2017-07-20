@@ -12,7 +12,7 @@
 
 ## Installation
 
-```
+```sh
 npm install --save-dev @bdchauvette/gulp-prettier
 ```
 
